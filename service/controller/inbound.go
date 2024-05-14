@@ -66,6 +66,7 @@ func InboundBuilder(config *Config, nodeInfo *api.NodeInfo, tag string) (*core.I
 		b := make([]byte, 32)
 		rand.Read(b)
 		ssSetting.Password = hex.EncodeToString(b)
+		ssSetting.Cipher = strings.ToLower(nodeInfo.CipherMethod)
 		ssSetting.NetworkList = &conf.NetworkList{"tcp", "udp"}
 		ssSetting.IVCheck = !config.DisableIVCheck
 
